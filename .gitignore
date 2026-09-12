@@ -1,0 +1,4 @@
+node_modules/
+my-portfolio/
+.DS_Store
+*.log
