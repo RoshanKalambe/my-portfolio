@@ -162,5 +162,5 @@ if (profileImage) {
 }
 
 // Console welcome message
-console.log('%c Welcome to Roshan Kalambe\'s Portfolio! ', 'background: #d4af37; color: #0a0a0a; font-size: 16px; font-weight: bold; padding: 10px;');
-console.log('%c Built with HTML, CSS & JavaScript ', 'background: #c9a227; color: white; font-size: 12px; padding: 5px;');
+console.log('%c Welcome to Roshan Kalambe\'s Portfolio! ', 'background: #EAE0C8; color: #202833; font-size: 16px; font-weight: bold; padding: 10px;');
+console.log('%c Built with HTML, CSS & JavaScript ', 'background: #d4cbb0; color: #202833; font-size: 12px; padding: 5px;');
