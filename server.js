@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+const PORT = 3001;
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -51,10 +51,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
-    console.log(`Available pages:`);
-    console.log(`  - http://localhost:${PORT}/index.html (Home)`);
-    console.log(`  - http://localhost:${PORT}/about.html (About)`);
-    console.log(`  - http://localhost:${PORT}/skills.html (Skills)`);
-    console.log(`  - http://localhost:${PORT}/projects.html (Projects)`);
-    console.log(`  - http://localhost:${PORT}/contact.html (Contact)`);
+    console.log(`Single-page portfolio with smooth scrolling navigation`);
 });

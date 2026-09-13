@@ -20,15 +20,29 @@ navLinks.forEach(link => {
     });
 });
 
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
 // Navbar Background Change on Scroll
 const navbar = document.querySelector('.navbar');
 if (navbar) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(26, 26, 46, 0.98)';
+            navbar.style.background = 'rgba(32, 40, 51, 0.98)';
             navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
         } else {
-            navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+            navbar.style.background = 'rgba(32, 40, 51, 0.95)';
             navbar.style.boxShadow = 'none';
         }
     });
@@ -51,7 +65,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe all sections for animation (except hero on home page)
 document.querySelectorAll('section').forEach(section => {
-    if (!section.classList.contains('hero')) {
+    if (!section.classList.contains('hero') && !section.classList.contains('quick-overview')) {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -127,14 +141,24 @@ document.querySelectorAll('.overview-card').forEach(card => {
     });
 });
 
-// Set active navigation link based on current page
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-navLinks.forEach(link => {
-    link.classList.remove('active');
-    const linkPage = link.getAttribute('href');
-    if (linkPage === currentPage) {
-        link.classList.add('active');
-    }
+// Set active navigation link based on scroll position for single-page
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
 });
 
 // Add active class styling
